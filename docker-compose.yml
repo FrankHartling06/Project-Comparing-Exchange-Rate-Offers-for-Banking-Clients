@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  exchange-app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python demo.py
+    
+  exchange-app-tests:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python -m pytest --cov=src
