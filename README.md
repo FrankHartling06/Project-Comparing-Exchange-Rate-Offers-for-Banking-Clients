@@ -44,11 +44,51 @@ Esta opción utiliza respuestas simuladas predefinidas para demostrar la funcion
 
 ### 2. Pruebas personalizadas
 
+Para ejecutar pruebas con configuraciones personalizadas, ahora tienes tres modos disponibles:
+
+#### 1. Modo Predefinido (por defecto)
+
 ```
 python custom_test.py
 ```
 
-Ejecuta pruebas con proveedores mock configurables para diferentes escenarios.
+Ejecuta los casos de prueba predefinidos en el script.
+
+#### 2. Modo Interactivo
+
+```
+python custom_test.py --modo interactivo
+```
+
+Permite ingresar datos de conversión a través de la consola de forma interactiva, pudiendo realizar múltiples conversiones.
+
+#### 3. Modo Personalizado
+
+```
+python custom_test.py --modo personalizado --origen USD --destino EUR --cantidad 1000
+```
+
+Parámetros disponibles:
+
+- `--origen`: Moneda de origen (ej. USD)
+- `--destino`: Moneda de destino (ej. EUR)
+- `--cantidad`: Cantidad a convertir
+- `--fallo`: Proveedor que debe fallar (1, 2 o 3)
+- `--tasa1`, `--tasa2`, `--tasa3`: Tasas personalizadas para cada proveedor
+- `--tiempo1`, `--tiempo2`, `--tiempo3`: Tiempos de respuesta en ms para cada proveedor
+
+Ejemplos:
+
+```
+# Conversión básica
+python custom_test.py --modo personalizado --origen USD --destino EUR --cantidad 1000
+
+# Con proveedor fallando
+python custom_test.py --modo personalizado --origen USD --destino EUR --cantidad 1000 --fallo 2
+
+# Con tasas personalizadas
+python custom_test.py --modo personalizado --origen USD --destino EUR --cantidad 1000 --tasa1 0.9 --tasa2 0.91 --tasa3 0.89
+```
 
 #### Personalización de pruebas
 
